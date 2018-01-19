@@ -2,10 +2,10 @@ from django.conf.urls import url
 from django.contrib import admin
 # from django.urls import path
 
-from landing import views
+from orders import views
 
 admin.autodiscover()
 
 urlpatterns = [
-    # url(r'^', views.index, name="index"),
+     url(r'^basket_adding/$', views.basket_adding, name="basket_adding"),
 ]

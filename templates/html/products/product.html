@@ -2,10 +2,62 @@
 {% load static %}
 
 {% block content %}
-    <div>
-    <p>
-        <h3>
-            {{ product.product_name }}
-        </h3>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+
+                {% for image_item in product.productimage_set.all %}
+                    <img src="{{ image_item.image.url }}" class="embed-responsive">
+                {% endfor %}
+            </div>
+            <div class="col-lg-6">
+                <h1 class="text-center">
+                    {{ product.product_name }}
+                </h1>
+                <div class="price">
+                    <p>
+                        Price:{{ product.price }}
+                    </p>
+                </div>
+
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs"   role="tablist">
+                        <li role="presentation" class="active"><a href="#description" aria-controls="description"
+                                                                  role="tab"
+                                                                  data-toggle="tab" class="btn delivery-btn">Description</a></li>
+
+                        <li role="presentation" class="active"><a href="#delivery" aria-controls="delivery"
+                                                                  role="tab"
+                                                                  data-toggle="tab" class="btn delivery-btn">Delivery</a></li>
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content product-desc-tabs">
+
+                        <div role="tabpanel" class="tab-pane active" id="description">
+                            {{ product.description }}
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="delivery">
+                            <h3>Delivery</h3>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div>
+                    <form id="ordering" class="form-inline" action="{% url 'basket_adding' %}">{% csrf_token %}
+                        <input type="number" class="form-control" name="number" id="number">
+                    <button id="submit_btn" type="submit" class="btn btn-success btn-buy" data-product_id="{{ product.id }}"
+                    data-product_name="{{ product.product_name }}" data-product_price="{{ product.price }}" data-product_discount="{{ product.discount }}">Order</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+
 {% endblock %}

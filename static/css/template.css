@@ -1,11 +1,11 @@
-html, body{
+html, body {
     background-color: #edeef0;
     height: 100%;
     max-height: 100%;
     font-family: "Roboto", "Lucida Grande", Verdana, Arial, sans-serif;
 }
 
-.navbar{
+.navbar {
     margin-bottom: -20px;
 }
 
@@ -40,7 +40,7 @@ html, body{
     vertical-align: top;
 }
 
-.image img{
+.image img {
     max-height: 300px;
     /*max-width: 100%;*/
 }
@@ -63,12 +63,11 @@ div.section {
     margin-top: 10px;
 }
 
-.col-lg-3{
+.col-lg-3 {
     margin-bottom: 10px;
 }
 
-
-.discount{
+.discount {
     position: absolute;
     top: 40%;
     background: green;
@@ -93,4 +92,74 @@ div.section {
 .wrapper-content {
     overflow: auto;
     padding-bottom: 180px;
+}
+
+.product-desc-tabs {
+    padding: 10px;
+}
+
+.delivery-btn {
+    background-color: white;
+    margin-left: 5px;
+}
+
+
+
+.navbar-main {
+    min-height: 50px;
+    height: 55px;
+}
+
+.nav-bar-top {
+    min-height: 10px;
+    height: 20px;
+    border: none;
+    background-color: green;
+}
+
+.cart {
+    color: white;
+}
+
+.cart:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.basket {
+    position: relative;
+    top: 0px;
+    width: 250px;
+}
+
+.basket-items {
+    position: absolute;
+    top: 20px;
+    right: 0;
+    width:250px;
+    background-color: #4d5661;
+    z-index: 10;
+    padding: 10px;
+}
+
+.hidden {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.delete-item  {
+    color: white;
+}
+
+.delete-item:hover{
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-top{
+    min-height: 50px;
+    height: 50px;
+    background-color: green;
+    border: none;
+    border-radius: 0;
 }
