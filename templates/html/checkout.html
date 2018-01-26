@@ -1,0 +1,84 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="text-center">Products in basket:</h3>
+
+                {% if products_in_basket %}
+                <form class="form" method="POST">{% csrf_token %}
+
+                    <div class=" form-group personal_data">
+                        <label>Enter your name:</label> <input type="text" name="{{ form.name.html_name }}" class="form-control">
+                    </div>
+                    <div class=" form-group personal_data">
+                        <label>Enter your phone:</label> <input type="text" name="{{ form.phone.html_name }}" class="form-control">
+                    </div>
+
+
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="row">
+                                Product name
+
+                            </th>
+                            <th scope="row">
+                                Product quantity
+                            </th>
+                            <th scope="row">
+                                Price per item
+                            </th>
+                            <th scope="row">
+                                Total price for product
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody class="table">
+                        {% for product_in_basket in products_in_basket %}
+                            <tr>
+                                <td>
+                                    <a href="{% url 'product' product_in_basket.product_id %}">{{ product_in_basket.product.product_name }}</a>
+                                </td>
+                                <td>
+                                    <input value="{{ product_in_basket.number }}" type="number" min="0"
+                                           class="product_in_basket_number"
+                                           name="product_id_{{ product_in_basket.id }}"> pcs
+                                </td>
+                                <td>
+                                    <span class="product_price">
+                                    {{ product_in_basket.product.price }} $
+                                        </span>
+                                </td>
+                                <td>
+                                    <span class="total_product_amount_in_basket">
+                                    {{ product_in_basket.total_price }} $
+                                        </span>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <h5 class="text-right"> Total price:
+                        <span id="total_order_amount"></span>
+
+                    </h5>
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-primary btn-lg">Order</button>
+                    </div>
+
+                </form>
+            {% else %}
+            <div>
+                No products in basket
+            </div>
+            {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

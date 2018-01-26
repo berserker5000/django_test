@@ -1,0 +1,43 @@
+{% extends 'html/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="login-box">
+        <div class="left">
+            <h2>Sign in</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in sign_in_form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+
+
+        <div class="right">
+            <h2>Sign up</h2>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in sign_up_form %}
+                    <p>
+                        {{ field.label_tag }}<br>
+                        {{ field }}
+
+                        {% for error in field.errors %}
+                            <p style="color: red">{{ error }}</p>
+                        {% endfor %}
+                    </p>
+                {% endfor %}
+                <button type="submit">Sign up</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

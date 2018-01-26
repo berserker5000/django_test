@@ -1,40 +1,56 @@
-    <nav class="navbar navbar-default navbar-top">
-        df
-    </nav>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-
-
-      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark navbar-main">
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="{% url 'index' %}">Home</a>
-          </li>
-            </ul>
-          <ul class="nav navbar-nav my-2 my-lg-0 cart">
-              <li>
-                  <div class="basket">
-                  <a href="#" class="cart">Cart<span id="basket_total_amount"></span>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'index' %}">Home</a>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'contacts' %}">Our contacts</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'delivery' %}">Delivery</a>
+            </li>
+            {% if user.is_authenticated %}
+                  <li class="nav-item active">
+                <a class="nav-link" href="{% url 'logout_view' %}">Sign Out</a>
+            </li>
+                <li class="nav-item active nav-link">
+                Welcome back, {{ user.username }}
+                </li>
+                {% else %}
+                  <li class="nav-item active">
+                <a class="nav-link" href="{% url 'registration' %}">Sign In/Sign Up</a>
+            </li>
+            {% endif %}
+        </ul>
+        <ul class="nav navbar-nav my-2 my-lg-0 cart">
+            <li>
+                <div class="basket">
+                    <a href="{% url 'checkout' %}" class="cart">Cart<span id="basket_total_amount"></span>
                      <span id="basket_total_nmb">
                       {% if products_total_number %}
-                        ({{ products_total_number }})
+                          ({{ products_total_number }})
                       {% else %}
-                        (0)
+                          (0)
                       {% endif %}
                      </span></a>
 
-                  <div class="basket-items hidden">
-                      <ul class="">
-                          {% for product_in_basket in products_in_basket %}
-                              <li>{{ product_in_basket.product.product_name }} * {{ product_in_basket.number }} pcs = {{ product_in_basket.total_price }} $</li>
-                          {% endfor %}
+                    <div class="basket-items hidden">
+                        <ul class="">
+                            {% for product_in_basket in products_in_basket %}
+                                <li>{{ product_in_basket.product.product_name }} * {{ product_in_basket.number }} pcs
+                                    = {{ product_in_basket.total_price }} $
+                                </li>
+                            {% endfor %}
 
-                      </ul>
-                  </div>
-                      </div>
-              </li>
-          </ul>
-      </div>
-    </nav>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
 
 
 

@@ -18,3 +18,13 @@ class SubscriberAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Subscriber, SubscriberAdmin)
+
+
+#
+# class SignInAdmin(admin.ModelAdmin):
+#     list_display = [field.name for field in SignIn._meta.fields]
+#     class Meta:
+#         model = SignIn
+#
+#
+# admin.site.register(SignIn, SignInAdmin)

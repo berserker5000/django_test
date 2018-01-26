@@ -14,9 +14,8 @@ class ProductInOrderInline(admin.TabularInline):
 class OrderAdmin(admin.ModelAdmin):
     list_display = [field.name for field in Order._meta.fields]
     inlines = [ProductInOrderInline]
-    exclude = ["id"]
-    list_filter = ["status"]
-    search_fields = ["status", "customer name"]
+    list_filter = ["customer_name"]
+    search_fields = ["customer_name", "customer_email"]
 
     class Meta:
         model = Order

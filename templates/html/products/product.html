@@ -7,7 +7,7 @@
             <div class="col-lg-6">
 
                 {% for image_item in product.productimage_set.all %}
-                    <img src="{{ image_item.image.url }}" class="embed-responsive">
+                    <img class="mySlides w3-animate-top embed-responsive" src="{{ image_item.image.url }}">
                 {% endfor %}
             </div>
             <div class="col-lg-6">
@@ -16,7 +16,7 @@
                 </h1>
                 <div class="price">
                     <p>
-                        Price:{{ product.price }}
+                        Price:{{ product.price }} $
                     </p>
                 </div>
 
@@ -41,7 +41,7 @@
                             {{ product.description }}
                         </div>
                         <div role="tabpanel" class="tab-pane" id="delivery">
-                            <h3>Delivery</h3>
+                            <h5>We can deliver all products to you withing 5 work days.</h5>
                         </div>
 
                     </div>
@@ -50,7 +50,7 @@
 
                 <div>
                     <form id="ordering" class="form-inline" action="{% url 'basket_adding' %}">{% csrf_token %}
-                        <input type="number" class="form-control" name="number" id="number">
+                        <input type="number" min="0" class="form-control" name="number" id="number">
                     <button id="submit_btn" type="submit" class="btn btn-success btn-buy" data-product_id="{{ product.id }}"
                     data-product_name="{{ product.product_name }}" data-product_price="{{ product.price }}" data-product_discount="{{ product.discount }}">Order</button>
 

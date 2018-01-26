@@ -14,3 +14,9 @@ class Subscriber(models.Model):
             return self.name
         except Exception:
             return self.id
+
+
+
+class SignIn(models.Model):
+    name = models.CharField(max_length=128)
+    password = models.CharField(max_length=512)
